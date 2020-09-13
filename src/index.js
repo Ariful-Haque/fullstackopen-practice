@@ -8,22 +8,17 @@ import ReactDOM from 'react-dom'
 
 const App = (props) => {
   const [value, setValue] = useState(10)
-
-  const Hello = (who) => () => 
-    console.log('Hello', who)
-
-  /*
-  The hello function that creates the event handlers can 
-  be thought of as a factory that produces customized event handlers meant for greeting users.
-  */
-
+  
+  const setToValue = (newValue) => () => {
+    setValue(newValue)
+  }
+  
   return (
     <div>
       {value}
-      <button onClick={Hello("Arif")} >Click-me</button>
-      <button onClick={Hello("Sakib")} >Click-me</button>
-      <button onClick={Hello("Rihan")} >Click-me</button>
-      <button onClick={Hello("Babor")} >Click-me</button>
+      <button onClick={setToValue(1000)}>thousand</button>
+      <button onClick={setToValue(0)}>reset</button>
+      <button onClick={setToValue(value + 1)}>increment</button>
     </div>
   )
 }
